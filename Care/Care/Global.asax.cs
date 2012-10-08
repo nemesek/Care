@@ -18,7 +18,8 @@ namespace Care
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            IocConfig.RegisterIoc(GlobalConfiguration.Configuration);   
+            //IocConfig.RegisterIoc(GlobalConfiguration.Configuration);   
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
