@@ -11,7 +11,9 @@ namespace Care.Data.Concrete
 {
     public class StudentRepository : EFRepository<Student>, IStudentRepository
     {
-        public StudentRepository(DbContext context, IStudentRepository studentRepo) : base(context) { }
+        //public StudentRepository(DbContext context, IStudentRepository studentRepo) : base(context) { }
+
+        public StudentRepository(DbContext context) : base(context) { }
 
         public int GetRiskAssessment(int id)
         {

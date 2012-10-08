@@ -46,8 +46,13 @@
   <ItemGroup>
     <Compile Include="Abstract\ICareUow.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IRepositoryProvider.cs" />
     <Compile Include="Abstract\IStudentRepository.cs" />
+    <Compile Include="Concrete\CareDbContext.cs" />
+    <Compile Include="Concrete\CareUow.cs" />
     <Compile Include="Concrete\EFRepository.cs" />
+    <Compile Include="Concrete\RepositoryFactories.cs" />
+    <Compile Include="Concrete\RepositoryProvider.cs" />
     <Compile Include="Concrete\StudentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
