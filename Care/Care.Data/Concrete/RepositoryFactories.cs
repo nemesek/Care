@@ -32,7 +32,7 @@ namespace Care.Data.Concrete
         /// <remarks>
         /// MODIFY THIS METHOD TO ADD CUSTOM CARE FACTORY FUNCTIONS
         /// </remarks>
-        private IDictionary<Type, Func<DbContext, object>> GetCodeCamperFactories()
+        private IDictionary<Type, Func<DbContext, object>> GetCareFactories()
         {
             return new Dictionary<Type, Func<DbContext, object>>
                 {
@@ -48,11 +48,11 @@ namespace Care.Data.Concrete
         }
 
         /// <summary>
-        /// Constructor that initializes with runtime Code Camper repository factories
+        /// Constructor that initializes with runtime Care repository factories
         /// </summary>
         public RepositoryFactories()
         {
-            _repositoryFactories = GetCodeCamperFactories();
+            _repositoryFactories = GetCareFactories();
         }
 
         /// <summary>

@@ -25,6 +25,8 @@ namespace Care.Controllers
             admin.FirstName = "Dan";
             admin.LastName = "Nemesek";
             _uow.Administrators.Add(admin);
+            _uow.Commit();
+                      
 
             return View();
         }

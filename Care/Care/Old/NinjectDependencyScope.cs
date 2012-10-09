@@ -5,6 +5,7 @@ using System.Web.Http.Dependencies;
 using Ninject;
 using Ninject.Syntax;
 
+
 namespace Care.Web
 {
     public class NinjectDependencyScope : IDependencyScope

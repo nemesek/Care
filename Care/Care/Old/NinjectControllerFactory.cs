@@ -7,6 +7,7 @@ using Care.Data.Abstract;
 using Care.Data.Concrete;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Ninject.Web.Common;
 
 namespace Care
 {
@@ -50,7 +51,8 @@ namespace Care
             ninjectKernel.Bind<RepositoryFactories>().To<RepositoryFactories>()
                .InSingletonScope();
             ninjectKernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
-            ninjectKernel.Bind<ICareUow>().To<CareUow>();
+            ninjectKernel.Bind<ICareUow>().To<CareUow>().InRequestScope();
+            //ninjectKernel.Bind<ICareUow>().To<CareUow>();
         }
     }
 }
