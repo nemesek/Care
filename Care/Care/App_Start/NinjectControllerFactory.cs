@@ -47,6 +47,9 @@ namespace Care
             //};
 
             //ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            ninjectKernel.Bind<RepositoryFactories>().To<RepositoryFactories>()
+               .InSingletonScope();
+            ninjectKernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
             ninjectKernel.Bind<ICareUow>().To<CareUow>();
         }
     }
