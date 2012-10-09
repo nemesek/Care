@@ -13,9 +13,6 @@ namespace Care
     {
         public override void Load()
         {
-            //Bind<IDataContext>().To<DataContext>().InRequestScope();
-            //Bind<IArchivesRepository>().To<ArchivesRepository>().InRequestScope();
-            //Bind<IMessagesRepository>().To<MessagesRepository>().InRequestScope();
             Bind<RepositoryFactories>().To<RepositoryFactories>().InSingletonScope();
             Bind<IRepositoryProvider>().To<RepositoryProvider>();
             Bind<ICareUow>().To<CareUow>().InRequestScope();

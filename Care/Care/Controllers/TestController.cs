@@ -21,11 +21,23 @@ namespace Care.Controllers
 
         public ActionResult Index()
         {
-            Administrator admin = new Administrator();
-            admin.FirstName = "Dan";
-            admin.LastName = "Nemesek";
-            _uow.Administrators.Add(admin);
+            //Administrator admin = new Administrator();
+            //admin.FirstName = "Dan";
+            //admin.LastName = "Nemesek";
+            //_uow.Administrators.Add(admin);
+            Administrator admin = _uow.Administrators.GetById(1);
+            for (int i = 0; i < 5; i++)
+            {
+                Student student = new Student();
+                student.FirstName = "Charlie" + i.ToString();
+                student.LastName = "Brown" + i.ToString();
+                student.Administrator = admin;
+                _uow.Students.Add(student);
+            }
             _uow.Commit();
+            //var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
+            var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);
+            
                       
 
             return View();
