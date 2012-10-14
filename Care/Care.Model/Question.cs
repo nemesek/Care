@@ -13,5 +13,7 @@ namespace Care.Model
         public string Value { get; set; }
         public string TestName { get; set; }
         public string Color { get; set; }
+        public string ParentId { get; set; }
+        public bool HasSubQuestion { get; set; }
     }
 }
