@@ -36,14 +36,10 @@ namespace Care.Data.Concrete
         {
             return new Dictionary<Type, Func<DbContext, object>>
                 {
-                   //{typeof(IAttendanceRepository), dbContext => new AttendanceRepository(dbContext)},
-                   //{typeof(IPersonsRepository), dbContext => new PersonsRepository(dbContext)},
-                   //{typeof(ISessionsRepository), dbContext => new SessionsRepository(dbContext)},
+
                    {typeof(IStudentRepository), dc => new StudentRepository(dc)},
-                   {typeof(IRepository<Administrator>), dc => new EFRepository<Administrator>(dc)},
-                   {typeof(IRepository<Test>), dc => new EFRepository<Test>(dc)},
-                   {typeof(IRepository<Answer>), dc => new EFRepository<Answer>(dc)},
-                   {typeof(IRepository<Question>), dc => new EFRepository<Question>(dc)},
+                   //{typeof(IRepository<Administrator>), dc => new EFRepository<Administrator>(dc)},
+
                  };
         }
 
