@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Web", "Care\Care.Web.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Tests", "Care.Tests\Care.Tests.csproj", "{2B91120B-867C-4EB7-AB72-091DA032087F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Model", "Care.Model\Care.Model.csproj", "{82081BCD-6E19-4B12-9E94-3B1BFA6842AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Domain", "Care.Model\Care.Domain.csproj", "{82081BCD-6E19-4B12-9E94-3B1BFA6842AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Data", "Care.Data\Care.Data.csproj", "{F231DD38-9745-4243-9A41-AEE284658807}"
 EndProject

@@ -1,4 +1,4 @@
-﻿@model Care.Model.Test
+﻿@model Care.Domain.Question
 
 @{
     ViewBag.Title = "Index";
@@ -8,3 +8,11 @@
 <Body>
     <p>Hello Dan</p>
 </Body>
+
+<h3>Question</h3>
+<div id="QuestionId">@Model.Id.ToString()</div>
+<div id="QuestionValue">@Model.Value.ToString()</div>
+@using (Html.BeginForm("Index", "Test", new { id = @Model.Id.ToString() }))
+{
+    <input class="button" id="submit" type="submit" value="Submit" />
+}

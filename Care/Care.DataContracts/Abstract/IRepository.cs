@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Care.Data.Abstract
+namespace Care.DataContracts.Abstract
 {
     public interface IRepository<T> where T : class
     {

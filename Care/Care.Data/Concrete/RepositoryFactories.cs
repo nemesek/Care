@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Care.Data.Abstract;
-using Care.Model;
+using Care.Domain;
+using Care.Domain.Abstract;
 
 namespace Care.Data.Concrete
 {

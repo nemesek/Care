@@ -312,9 +312,9 @@
       <Project>{f231dd38-9745-4243-9a41-aee284658807}</Project>
       <Name>Care.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Care.Model\Care.Model.csproj">
+    <ProjectReference Include="..\Care.Model\Care.Domain.csproj">
       <Project>{82081bcd-6e19-4b12-9e94-3b1bfa6842ad}</Project>
-      <Name>Care.Model</Name>
+      <Name>Care.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

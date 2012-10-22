@@ -9,7 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Care.Filters;
-using Care.Model;
+using Care.Domain;
 
 namespace Care.Controllers
 {

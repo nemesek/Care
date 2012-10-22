@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Ninject;
-using Care.Data.Abstract;
+using Care.Domain.Abstract;
 using Care.Data.Concrete;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject.Web.Common;
+using Care.Data.Abstract;
 
 namespace Care
 {

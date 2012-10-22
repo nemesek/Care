@@ -1,7 +1,8 @@
 ﻿using System.Web.Http;
 using Care.Data.Concrete;
-using Care.Data.Abstract;
 using Ninject;
+using Care.Data.Abstract;
+using Care.Domain.Abstract;
 
 namespace Care.Web
 {

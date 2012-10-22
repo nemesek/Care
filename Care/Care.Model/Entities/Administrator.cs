@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Care.Model
+namespace Care.Domain
 {
-    public class Test
+    public class Administrator
     {
         public int Id { get; set; }
-        public string Type { get; set; }
-        public virtual Student Student { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F231DD38-9745-4243-9A41-AEE284658807}</ProjectGuid>
+    <ProjectGuid>{82081BCD-6E19-4B12-9E94-3B1BFA6842AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Care.Data</RootNamespace>
-    <AssemblyName>Care.Data</AssemblyName>
+    <RootNamespace>Care.Domain</RootNamespace>
+    <AssemblyName>Care.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,13 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,29 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IRepositoryProvider.cs" />
-    <Compile Include="Concrete\CareDbContext.cs" />
-    <Compile Include="Concrete\CareUow.cs" />
-    <Compile Include="Concrete\EFRepository.cs" />
-    <Compile Include="Concrete\RepositoryFactories.cs" />
-    <Compile Include="Concrete\RepositoryProvider.cs" />
-    <Compile Include="Concrete\StudentRepository.cs" />
+    <Compile Include="Abstract\ICareUow.cs" />
+    <Compile Include="Abstract\IQuestionGenerator.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IStudentRepository.cs" />
+    <Compile Include="Abstract\ITestLogic.cs" />
+    <Compile Include="Entities\AccountModels.cs" />
+    <Compile Include="Entities\Administrator.cs" />
+    <Compile Include="Entities\Answer.cs" />
+    <Compile Include="Concrete\QuestionGenerator.cs" />
+    <Compile Include="Concrete\SysrTestLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Care.Model\Care.Domain.csproj">
-      <Project>{82081bcd-6e19-4b12-9e94-3b1bfa6842ad}</Project>
-      <Name>Care.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataPopulation.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
+    <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\Student.cs" />
+    <Compile Include="Entities\Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

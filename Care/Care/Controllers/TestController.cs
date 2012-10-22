@@ -1,7 +1,8 @@
-﻿using Care.Data.Abstract;
-using Care.Model;
+﻿using Care.Domain;
+using Care.Domain.Abstract;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,34 +14,47 @@ namespace Care.Controllers
         //
         // GET: /Test/
         private ICareUow _uow;
+        private IQuestionGenerator questionGen;
 
-        public TestController(ICareUow uow)
+        public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
         {
             _uow = uow;
+            questionGen = questionGenerator;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int ? id)
         {
-            Administrator admin = new Administrator();
-            admin.FirstName = "Dan";
-            admin.LastName = "Nemesek";
-            _uow.Administrators.Add(admin);
-            //Administrator admin = _uow.Administrators.GetById(1);
-            for (int i = 0; i < 5; i++)
+            //Administrator admin = new Administrator();
+            //admin.FirstName = "Dan";
+            //admin.LastName = "Nemesek";
+            //_uow.Administrators.Add(admin);
+            ////Administrator admin = _uow.Administrators.GetById(1);
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Student student = new Student();
+            //    student.FirstName = "Charlie" + i.ToString();
+            //    student.LastName = "Brown" + i.ToString();
+            //    student.Administrator = admin;
+            //    _uow.Students.Add(student);
+            //}
+            //_uow.Commit();
+            ////var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
+            //var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);
+            //Question prevQuestion = new Question();
+            Question prevQuestion = new Question();
+            if (id.HasValue)
             {
-                Student student = new Student();
-                student.FirstName = "Charlie" + i.ToString();
-                student.LastName = "Brown" + i.ToString();
-                student.Administrator = admin;
-                _uow.Students.Add(student);
+                //prevQuestion.Id = 18;
+                prevQuestion.Id = id.Value;
             }
-            _uow.Commit();
-            //var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
-            var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);
-            
-                      
-
-            return View();
+            else
+            {
+                prevQuestion.Id = 18;
+            }
+           
+            //prevQuestion.Id = 18;
+            Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());         
+            return View(question);
         }
 
         //

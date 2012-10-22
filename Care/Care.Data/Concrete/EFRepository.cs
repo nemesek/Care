@@ -7,6 +7,7 @@ using Care.Data.Abstract;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using Care.Domain.Abstract;
 
 
 namespace Care.Data.Concrete

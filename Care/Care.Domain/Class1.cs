@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Care.Domain.Abstract
+namespace Care.Domain
 {
-    public interface ITestLogic
+    public class Class1
     {
-        int GetQuestionId(Question prevQuestion, Answer prevAnswer);
-
     }
 }

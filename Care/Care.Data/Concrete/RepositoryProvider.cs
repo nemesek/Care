@@ -1,4 +1,5 @@
 ﻿using Care.Data.Abstract;
+using Care.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

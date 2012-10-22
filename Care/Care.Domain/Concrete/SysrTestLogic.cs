@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Care.Domain.Abstract;
+using Care.Model.Abstract;
 
-namespace Care.Domain.Concrete
+namespace Care.Model.Concrete
 {
     public class SysrTestLogic : ITestLogic
     {
         public int GetQuestionId(Question prevQuestion, Answer prevAnswer)
         {
-            int newQuestionId = prevQuestion.Id + 1;
-            return newQuestionId;  //TODO actually implement the logic
+
+            return prevQuestion.Id++;  //TODO actually implement the logic
         }
     }
 }

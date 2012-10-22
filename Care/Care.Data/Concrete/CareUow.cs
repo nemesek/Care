@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Care.Data.Abstract;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Care.Model;
+using Care.Domain;
+using Care.Data.Abstract;
+using Care.Domain.Abstract;
 
 namespace Care.Data.Concrete
 {

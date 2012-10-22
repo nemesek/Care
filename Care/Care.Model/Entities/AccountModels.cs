@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace Care.Model
+namespace Care.Domain
 {
     //public class UsersContext : DbContext
     //{

@@ -1,12 +1,11 @@
-﻿using Care.Domain.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Care.Data.Abstract
+namespace Care.DataContracts.Abstract
 {
     public interface IRepositoryProvider
     {

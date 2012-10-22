@@ -12,7 +12,7 @@ using Ninject;
 using System.Reflection;
 using Ninject.Modules;
 using Care.Data.Concrete;
-using Care.Data.Abstract;
+using Care.Domain.Abstract;
 
 namespace Care
 {
