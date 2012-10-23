@@ -1,10 +1,10 @@
 ﻿@model Care.Domain.Question
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Radio6";
 }
 
-<h2>Index</h2>
+<h2>Radio6</h2>
 <Body>
     <p>Hello Dan</p>
 </Body>
@@ -12,7 +12,7 @@
 <h3>Question</h3>
 <div id="QuestionId">@Model.Id.ToString()</div>
 <div id="QuestionValue">@Model.Value.ToString()</div>
-@using (Html.BeginForm("Index", "Test", new { id = @Model.Id.ToString() }))
+@using (Html.BeginForm("Radio6", "Test", new { id = @Model.Id.ToString() }))
 {
     <input class="button" id="submit" type="submit" value="Submit" />
 }

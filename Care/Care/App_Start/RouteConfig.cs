@@ -27,7 +27,7 @@ namespace Care
             routes.MapRoute(
                name: "Test",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "Test", action = "Route6", id = UrlParameter.Optional }
            );
         }
     }

@@ -23,7 +23,7 @@ namespace Care.Controllers
             questionGen = questionGenerator;
         }
 
-        public ActionResult Index(int ? id)
+        public ActionResult Radio6(int ? id)
         {
             //Administrator admin = new Administrator();
             //admin.FirstName = "Dan";
@@ -45,22 +45,28 @@ namespace Care.Controllers
             Question prevQuestion = new Question();
             if (id.HasValue)
             {
-                //prevQuestion.Id = 18;
                 prevQuestion.Id = id.Value;
             }
             else
             {
+                //prevQuestion.Id = 18;
                 prevQuestion.Id = 0;
             }
            
-            //prevQuestion.Id = 18;
             Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());
-            if (question.Id % 2 == 1)
-                return View(question);
-            else
+            switch (question.Type)
             {
-                return View("Index2", question);
+                case "Radio6":
+                    return View(question);
+                    //break;
+                case "Radio2":
+                    return View("Radio2", question);
+                    //break;
+                default:
+                    return View(question);
+                    //break;
             }
+
         }
 
         //

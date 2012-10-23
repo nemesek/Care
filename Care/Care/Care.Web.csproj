@@ -299,8 +299,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\Test\Index2.cshtml" />
+    <Content Include="Views\Test\Radio6.cshtml" />
+    <Content Include="Views\Test\Radio2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
