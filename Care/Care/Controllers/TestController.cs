@@ -16,9 +16,10 @@ namespace Care.Controllers
         private ICareUow _uow;
         private IQuestionGenerator questionGen;
 
-        public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
+        //public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
+        public TestController(IQuestionGenerator questionGenerator)
         {
-            _uow = uow;
+            //_uow = uow;
             questionGen = questionGenerator;
         }
 
