@@ -14,5 +14,24 @@
 <div id="QuestionValue">@Model.Value.ToString()</div>
 @using (Html.BeginForm("Radio6", "Test", new { id = @Model.Id.ToString() }))
 {
+    
+    @Html.RadioButton("ratings", "0", true)@:0<br />
+    @Html.RadioButton("ratings", "1")@:1<br />
+    @Html.RadioButton("ratings", "2")@:2<br />
+    @Html.RadioButton("ratings", "3")@:3<br />
+    @Html.RadioButton("ratings", "4")@:4<br />
+    @Html.RadioButton("ratings", "5")@:5<br />
+    @Html.RadioButton("ratings", "6")@:6<br />
     <input class="button" id="submit" type="submit" value="Submit" />
+
+    
 }
+
+
+@*    <input type="radio" name="rating" value="0"/>
+    <input type="radio" name="rating" value="1"/>
+    <input type="radio" name="rating" value="2"/>
+    <input type="radio" name="rating" value="3"/>
+    <input type="radio" name="rating" value="4"/>
+    <input type="radio" name="rating" value="5"/>
+    <input type="radio" name="rating" value="6"/>*@
