@@ -20,6 +20,7 @@ namespace Care
             Bind<ICareUow>().To<CareUow>().InRequestScope();
             Bind<ITestLogic>().To<SysrTestLogic>();
             Bind<IQuestionGenerator>().To<QuestionGenerator>();
+            Bind<ITestService>().To<TestService>();
         }
     }
 }

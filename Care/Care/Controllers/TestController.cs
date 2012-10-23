@@ -2,6 +2,7 @@
 using Care.Domain.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
@@ -13,9 +14,9 @@ namespace Care.Controllers
     {
         //
         // GET: /Test/
-        private ICareUow _uow;
+        //private ICareUow _uow;
         private IQuestionGenerator questionGen;
-
+        
         //public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
         public TestController(IQuestionGenerator questionGenerator)
         {
@@ -23,8 +24,39 @@ namespace Care.Controllers
             questionGen = questionGenerator;
         }
 
-        public ActionResult Radio6(int ? id)
+        public ActionResult Radio6(int? id, FormCollection formCollection)
         {
+            int testId;
+            string answerValue = "";
+            foreach (string formData in formCollection)
+            {
+                if (formData == "ratings")
+                {
+                    answerValue = formCollection[formData];
+                }
+                if (formData == "testId") 
+                {
+                    bool result = Int32.TryParse(formCollection[formData], out testId);
+                    if (result)
+                    {
+                        ViewBag.TestId = testId;
+
+                    }
+                    else
+                    {
+                        ViewBag.TestId = 22;
+                    }
+                }
+            }
+
+            if (answerValue != "")
+            {
+                //string x = "not implemented"; //TODO Save Answer -- ? Move if logic to Service Layer
+                Answer answer = new Answer();
+                answer.Value = answerValue;
+                
+            }
+
             //Administrator admin = new Administrator();
             //admin.FirstName = "Dan";
             //admin.LastName = "Nemesek";
@@ -41,30 +73,37 @@ namespace Care.Controllers
             //_uow.Commit();
             ////var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
             //var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);
-            //Question prevQuestion = new Question();
-            Question prevQuestion = new Question();
+            
+            Question prevQuestion = new Question();   //TODO ? move if else logic to Service Layer
             if (id.HasValue)
             {
                 prevQuestion.Id = id.Value;
             }
             else
             {
-                //prevQuestion.Id = 18;
-                prevQuestion.Id = 0;
+                //prevQuestion.Id = 0;
+                prevQuestion.Id = 35;
             }
            
             Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());
-            switch (question.Type)
+            if (question != null)
             {
-                case "Radio6":
-                    return View(question);
+                switch (question.Type)
+                {
+                    case "Radio6":
+                        return View(question);
                     //break;
-                case "Radio2":
-                    return View("Radio2", question);
+                    case "Radio2":
+                        return View("Radio2", question);
                     //break;
-                default:
-                    return View(question);
+                    default:
+                        return View(question);
                     //break;
+                }
+            }
+            else
+            {
+                return View("TestComplete");
             }
 
         }

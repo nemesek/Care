@@ -14,7 +14,7 @@
 <div id="QuestionValue">@Model.Value.ToString()</div>
 @using (Html.BeginForm("Radio6", "Test", new { id = @Model.Id.ToString() }))
 {
-    
+    @Html.Hidden("testId", @Model.Id.ToString());
     @Html.RadioButton("ratings", "0", true)@:0<br />
     @Html.RadioButton("ratings", "1")@:1<br />
     @Html.RadioButton("ratings", "2")@:2<br />
