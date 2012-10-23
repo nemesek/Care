@@ -49,12 +49,17 @@ namespace Care.Controllers
             }
             else
             {
-                prevQuestion.Id = 18;
+                prevQuestion.Id = 0;
             }
            
             //prevQuestion.Id = 18;
-            Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());         
-            return View(question);
+            Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());
+            if (question.Id % 2 == 1)
+                return View(question);
+            else
+            {
+                return View("Index2", question);
+            }
         }
 
         //
