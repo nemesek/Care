@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Domain", "Care.Model\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Data", "Care.Data\Care.Data.csproj", "{F231DD38-9745-4243-9A41-AEE284658807}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4091F931-2522-4A60-A9D3-A3B3B7BFC610}"
+	ProjectSection(SolutionItems) = preProject
+		TODOReminders.txt = TODOReminders.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

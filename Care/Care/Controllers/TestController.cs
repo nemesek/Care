@@ -34,19 +34,30 @@ namespace Care.Controllers
         {
             //Read form values
             string testIdValue = ParseFormValue(formCollection, "testId");
-            string answerValue = ParseFormValue(formCollection, "ratings");
+            string answerValue = ParseFormValue(formCollection, "answer");
             string  studentIdValue = ParseFormValue(formCollection, "studentId");
             string testType = ParseFormValue(formCollection, "testType");
             int testId = 0;
             int studentId = 0;
-            if (testIdValue != null)
-            {
-                 testId = ConvertStringToInt(testIdValue);
-            }
 
             if (studentIdValue != null && studentIdValue != "")
             {
                 studentId = ConvertStringToInt(studentIdValue);
+            }
+            else
+            {
+                return View("Error");
+            }
+
+            if (testIdValue != null)
+            {
+                testId = ConvertStringToInt(testIdValue);
+            }
+            else
+            {
+                //Get new TestId by passing studentId, testType to TestService
+                testId = 0;
+
             }
 
             ViewBag.TestId = testId;
@@ -84,15 +95,21 @@ namespace Care.Controllers
                     case "Radio2":
                         ViewBag.Partial = "Radio2Partial";
                         return View(question);
-                    //break;
-                    default:
+                    case "Radio5":
+                        ViewBag.Partial = "Radio5Partial";
                         return View(question);
+                    //break;
+                    case "InputText":
+                        ViewBag.Partial = "InputTextPartial";
+                        return View(question);
+                    default:
+                        return View("Error");
                     //break;
                 }
             }
             else
             {
-                return View("TestComplete");
+                return View("Complete");
             }
 
         }

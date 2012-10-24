@@ -11,15 +11,24 @@ namespace Care.Domain.Concrete
     {
         private IQuestionGenerator questionGenerator;
         private ICareUow uow;
+        private TestLogicFactory factory;
 
-        public TestService(ICareUow uow, IQuestionGenerator questionGenerator)
+        public TestService(ICareUow uow, TestLogicFactory factory)
         {
-            this.questionGenerator = questionGenerator;
+            //this.questionGenerator = questionGenerator;
+            this.factory = factory;
             this.uow = uow;
+        }
+
+        public Test CreateTest(string testType)
+        {
+            throw new NotImplementedException();
         }
 
         public Question GetNextQuestion(Test testId, Question prevQuestion)
         {
+            //string testType =     //Grab testType based off of TestId
+            //questionGenerator = this.factory.CreateTestLogicInstance(testType);
             throw new NotImplementedException();
         }
 

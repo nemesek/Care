@@ -12,6 +12,7 @@ namespace Care.Domain.Abstract
         void SaveAnswer(Test testId, Answer answer);
         Test GetTest(int? testId);
         Student GetStudent(int? studentId);
+        Test CreateTest(string testType);
 
     }
 }

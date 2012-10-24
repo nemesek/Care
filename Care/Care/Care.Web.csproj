@@ -301,11 +301,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Test\Question.cshtml" />
-    <Content Include="Views\Test\Radio2.cshtml" />
     <Content Include="Views\Test\TestComplete.cshtml" />
     <Content Include="Views\Test\StartSysr.cshtml" />
     <Content Include="Views\Test\Radio6Partial.cshtml" />
     <Content Include="Views\Test\Radio2Partial.cshtml" />
+    <Content Include="Views\Test\Radio5Partial.cshtml" />
+    <Content Include="Views\Test\InputTextPartial.cshtml" />
+    <Content Include="Views\Test\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

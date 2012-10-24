@@ -20,8 +20,6 @@ namespace Care.Domain.Concrete
         public Question GetNextQuestion(Question prevQuestion, Answer prevAnswer)
         {
             int qId = logic.GetQuestionId(prevQuestion, prevAnswer);
-            //Question q = new Question();
-            //q.Id = qId;
             Question q = uow.Questions.GetById(qId);
             return q;
         }
