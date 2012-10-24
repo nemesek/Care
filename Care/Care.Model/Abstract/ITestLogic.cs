@@ -8,7 +8,7 @@ namespace Care.Domain.Abstract
 {
     public interface ITestLogic
     {
-        int GetQuestionId(Question prevQuestion, Answer prevAnswer);
+        int GetQuestionId(Test test, Question prevQuestion, ICareUow uow);
 
     }
 }

@@ -16,13 +16,13 @@ namespace Care.Controllers
         //
         // GET: /Test/
         //private ICareUow _uow;
-        private IQuestionGenerator questionGen;
+        private ITestService service;
         
         //public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
-        public TestController(IQuestionGenerator questionGenerator)
+        public TestController(ITestService testService)
         {
             //_uow = uow;
-            questionGen = questionGenerator;
+            this.service = testService;
         }
 
         public ActionResult StartSysr()
@@ -57,11 +57,11 @@ namespace Care.Controllers
             {
                 //Get new TestId by passing studentId, testType to TestService
                 testId = 0;
-
             }
 
             ViewBag.TestId = testId;
-            ViewBag.StudentId = studentId;           
+            ViewBag.StudentId = studentId;
+            ViewBag.TestType = testType;
           
 
             if (answerValue != null)
@@ -82,8 +82,12 @@ namespace Care.Controllers
                 //prevQuestion.Id = 0;
                 prevQuestion.Id = 35;
             }
-           
-            Question question = questionGen.GetNextQuestion(prevQuestion, new Answer());
+
+            Test test = new Test();  //TODO change this stuff
+            test.Id = testId;
+            test.Type = testType;
+            //Question question = questionGen.GetNextQuestion(new Test(), prevQuestion, new Answer());
+            Question question = service.GetNextQuestion(test, prevQuestion);
             if (question != null)
             {
                 switch (question.Type)

@@ -8,8 +8,8 @@ namespace Care.Domain.Abstract
 {
     public interface ITestService
     {
-        Question GetNextQuestion(Test testId, Question prevQuestion);
-        void SaveAnswer(Test testId, Answer answer);
+        Question GetNextQuestion(Test test, Question prevQuestion);
+        void SaveAnswer(Test test, Answer answer);
         Test GetTest(int? testId);
         Student GetStudent(int? studentId);
         Test CreateTest(string testType);

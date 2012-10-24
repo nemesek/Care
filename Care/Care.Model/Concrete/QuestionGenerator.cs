@@ -11,15 +11,18 @@ namespace Care.Domain.Concrete
     {
         private ITestLogic logic;
         private ICareUow uow;
-        public QuestionGenerator(ITestLogic logic, ICareUow uow)
+        
+        
+        public QuestionGenerator(ICareUow uow)
         {
-            this.logic = logic;
+            //this.logic = logic;
             this.uow = uow;
         }
 
-        public Question GetNextQuestion(Question prevQuestion, Answer prevAnswer)
+        public Question GetNextQuestion(Test test, Question prevQuestion, ITestLogic logic)
         {
-            int qId = logic.GetQuestionId(prevQuestion, prevAnswer);
+            this.logic = logic;
+            int qId = logic.GetQuestionId(test, prevQuestion, uow);
             Question q = uow.Questions.GetById(qId);
             return q;
         }

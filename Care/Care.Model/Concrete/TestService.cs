@@ -9,42 +9,76 @@ namespace Care.Domain.Concrete
 {
     public class TestService : ITestService
     {
-        private IQuestionGenerator questionGenerator;
+        //private IQuestionGenerator questionGenerator;
         private ICareUow uow;
         private TestLogicFactory factory;
+        private ITestLogic tLogic;
+        private IQuestionGenerator qGen;
 
-        public TestService(ICareUow uow, TestLogicFactory factory)
+        public TestService(ICareUow uow, TestLogicFactory factory, IQuestionGenerator questionGenerator)
         {
-            //this.questionGenerator = questionGenerator;
+            this.qGen = questionGenerator;
             this.factory = factory;
             this.uow = uow;
+            
         }
 
         public Test CreateTest(string testType)
         {
-            throw new NotImplementedException();
+            if (testType != null)
+            {
+                Test test = new Test();
+                test.Type = testType;
+                uow.Tests.Add(test);
+                return test;
+            }
+            return null;
         }
 
-        public Question GetNextQuestion(Test testId, Question prevQuestion)
+        public Question GetNextQuestion(Test test, Question prevQuestion)
         {
-            //string testType =     //Grab testType based off of TestId
-            //questionGenerator = this.factory.CreateTestLogicInstance(testType);
-            throw new NotImplementedException();
+                    
+            string testType = test.Type;
+            if (testType != null)
+            {
+                tLogic = this.factory.CreateTestLogicInstance(testType);
+                return qGen.GetNextQuestion(test, prevQuestion, tLogic);
+            }
+            else
+                return null;
+
+            
         }
 
-        public void SaveAnswer(Test testId, Answer answer)
+        public void SaveAnswer(Test test, Answer answer)
         {
-            throw new NotImplementedException();
+            if (answer != null)
+            {
+                uow.Answers.Add(answer);
+            }
         }
 
         public Test GetTest(int? testId)
         {
-            throw new NotImplementedException();
+            if (testId.HasValue)
+            {
+                Test test = uow.Tests.GetById(testId.Value);
+                return test;
+            }
+            else
+                return null;
         }
 
         public Student GetStudent(int? studentId)
         {
-            throw new NotImplementedException();
+            if (studentId.HasValue)
+            {
+                return uow.Students.GetById(studentId.Value);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

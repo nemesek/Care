@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -95,6 +98,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="TestServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -103,6 +107,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Care.Data\Care.Data.csproj">
+      <Project>{f231dd38-9745-4243-9a41-aee284658807}</Project>
+      <Name>Care.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Care.Model\Care.Domain.csproj">
+      <Project>{82081bcd-6e19-4b12-9e94-3b1bfa6842ad}</Project>
+      <Name>Care.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Care\Care.Web.csproj">
       <Project>{D6EF7D7B-E81B-46F8-BFA9-245BBE11E9A0}</Project>
       <Name>Care.Web</Name>

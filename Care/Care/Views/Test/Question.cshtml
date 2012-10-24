@@ -16,7 +16,8 @@
 @using (Html.BeginForm("Question", "Test", new { id = @Model.Id.ToString() }))
 {
         @Html.Hidden("testId", (object)ViewBag.TestId.ToString());
-        @Html.Hidden("studentId", (object)ViewBag.StudentId.ToString());           
+        @Html.Hidden("studentId", (object)ViewBag.StudentId.ToString());
+        @Html.Hidden("testType", (object)ViewBag.TestType.ToString());           
         string x = ViewBag.Partial.ToString();
         //Html.Partial(x);
         Html.RenderPartial(x);

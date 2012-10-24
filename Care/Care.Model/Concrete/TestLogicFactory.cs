@@ -17,13 +17,18 @@ namespace Care.Domain.Concrete
 
         private ITestLogic GetInstance(string testType)
         {
-            switch (testType)
+            if (testType != null)
             {
-                case "Sysr":
-                    return new SysrTestLogic();
-                default:
-                    return null;
+                string test = testType.ToUpper();
+                switch (test)
+                {
+                    case "SYSR":
+                        return new SysrTestLogic();
+                    default:
+                        return null;
+                }
             }
+            return null;
         }
     }
 }

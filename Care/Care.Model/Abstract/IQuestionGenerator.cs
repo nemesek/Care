@@ -8,6 +8,6 @@ namespace Care.Domain.Abstract
 {
     public interface IQuestionGenerator
     {
-        Question GetNextQuestion(Question prevQuestion, Answer prevAnswer);
+        Question GetNextQuestion(Test test, Question prevQuestion, ITestLogic logic);
     }
 }

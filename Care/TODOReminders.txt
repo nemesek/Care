@@ -1,4 +1,4 @@
 1) Implement ITestLogicFactory
-2) Inject ITestLogicFactory into QuestionGenerator
+2) Inject ITestLogicFactory into TestService
 3) Inject ITestService into TestController
 4) Move if then logic from TestController to TestService

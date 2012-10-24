@@ -9,7 +9,7 @@ namespace Care.Domain.Concrete
 {
     public class SysrTestLogic : ITestLogic
     {
-        public int GetQuestionId(Question prevQuestion, Answer prevAnswer)
+        public int GetQuestionId(Test test, Question prevQuestion, ICareUow uow)
         {
             int newQuestionId = prevQuestion.Id + 1;
             return newQuestionId;  //TODO actually implement the logic
