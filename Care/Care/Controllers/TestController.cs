@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Care.ViewModels;
 
 namespace Care.Controllers
 {
@@ -24,55 +25,41 @@ namespace Care.Controllers
             questionGen = questionGenerator;
         }
 
-        public ActionResult Radio6(int? id, FormCollection formCollection)
+        public ActionResult StartSysr()
         {
-            int testId;
-            string answerValue = "";
-            foreach (string formData in formCollection)
-            {
-                if (formData == "ratings")
-                {
-                    answerValue = formCollection[formData];
-                }
-                if (formData == "testId") 
-                {
-                    bool result = Int32.TryParse(formCollection[formData], out testId);
-                    if (result)
-                    {
-                        ViewBag.TestId = testId;
+            return View();
+        }
 
-                    }
-                    else
-                    {
-                        ViewBag.TestId = 22;
-                    }
-                }
+        public ActionResult Question(int? id, FormCollection formCollection)
+        {
+            //Read form values
+            string testIdValue = ParseFormValue(formCollection, "testId");
+            string answerValue = ParseFormValue(formCollection, "ratings");
+            string  studentIdValue = ParseFormValue(formCollection, "studentId");
+            string testType = ParseFormValue(formCollection, "testType");
+            int testId = 0;
+            int studentId = 0;
+            if (testIdValue != null)
+            {
+                 testId = ConvertStringToInt(testIdValue);
             }
 
-            if (answerValue != "")
+            if (studentIdValue != null && studentIdValue != "")
+            {
+                studentId = ConvertStringToInt(studentIdValue);
+            }
+
+            ViewBag.TestId = testId;
+            ViewBag.StudentId = studentId;           
+          
+
+            if (answerValue != null)
             {
                 //string x = "not implemented"; //TODO Save Answer -- ? Move if logic to Service Layer
                 Answer answer = new Answer();
                 answer.Value = answerValue;
                 
-            }
-
-            //Administrator admin = new Administrator();
-            //admin.FirstName = "Dan";
-            //admin.LastName = "Nemesek";
-            //_uow.Administrators.Add(admin);
-            ////Administrator admin = _uow.Administrators.GetById(1);
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Student student = new Student();
-            //    student.FirstName = "Charlie" + i.ToString();
-            //    student.LastName = "Brown" + i.ToString();
-            //    student.Administrator = admin;
-            //    _uow.Students.Add(student);
-            //}
-            //_uow.Commit();
-            ////var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
-            //var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);
+            }        
             
             Question prevQuestion = new Question();   //TODO ? move if else logic to Service Layer
             if (id.HasValue)
@@ -91,10 +78,12 @@ namespace Care.Controllers
                 switch (question.Type)
                 {
                     case "Radio6":
+                        ViewBag.Partial = "Radio6Partial";
                         return View(question);
                     //break;
                     case "Radio2":
-                        return View("Radio2", question);
+                        ViewBag.Partial = "Radio2Partial";
+                        return View(question);
                     //break;
                     default:
                         return View(question);
@@ -193,5 +182,45 @@ namespace Care.Controllers
                 return View();
             }
         }
+
+        private string ParseFormValue(FormCollection collection, string key )
+        {
+            if (collection[key] != null)
+            {
+                return collection[key];
+            }
+
+            return null;
+        }
+
+        private int ConvertStringToInt(string num)
+        {
+            int retId;
+            bool result = Int32.TryParse(num, out retId);
+            if (result)
+            {
+                return retId;
+
+            }
+            return 0;
+        }
     }
 }
+
+
+//Administrator admin = new Administrator();
+//admin.FirstName = "Dan";
+//admin.LastName = "Nemesek";
+//_uow.Administrators.Add(admin);
+////Administrator admin = _uow.Administrators.GetById(1);
+//for (int i = 0; i < 5; i++)
+//{
+//    Student student = new Student();
+//    student.FirstName = "Charlie" + i.ToString();
+//    student.LastName = "Brown" + i.ToString();
+//    student.Administrator = admin;
+//    _uow.Students.Add(student);
+//}
+//_uow.Commit();
+////var students = _uow.Students.GetAll().FirstOrDefault(s => s.Administrator.Id == admin.Id);
+//var students = _uow.Students.GetAll().Where(s => s.Administrator.Id == admin.Id);

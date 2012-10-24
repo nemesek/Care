@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -299,9 +300,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Test\Radio6.cshtml" />
+    <Content Include="Views\Test\Question.cshtml" />
     <Content Include="Views\Test\Radio2.cshtml" />
     <Content Include="Views\Test\TestComplete.cshtml" />
+    <Content Include="Views\Test\StartSysr.cshtml" />
+    <Content Include="Views\Test\Radio6Partial.cshtml" />
+    <Content Include="Views\Test\Radio2Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

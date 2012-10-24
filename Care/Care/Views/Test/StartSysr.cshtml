@@ -1,0 +1,30 @@
+﻿@model Care.Domain.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StartTest</title>
+</head>
+<body>
+    <div>
+        Start Sysr Test
+    </div>
+    @using (Html.BeginForm("Question", "Test"))
+    {
+        @Html.Hidden("testType", "Sysr")
+        @Html.Hidden("testId", "1")
+        @Html.Raw("Student Id")<input type="text" name="studentId" />
+        <input class="button" id="submit" type="submit" value="Submit" />
+    }
+</body>
+</html>
+
+
+@*@Html.Hidden("studentId", @Model.Student.Id.ToString())*@
+@*@Html.Hidden("studentId", "41")*@
