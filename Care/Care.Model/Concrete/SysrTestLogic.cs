@@ -11,6 +11,10 @@ namespace Care.Domain.Concrete
     {
         public int GetQuestionId(Test test, Question prevQuestion, ICareUow uow)
         {
+            if(prevQuestion == null)
+            {
+                return 35;
+            }
             int newQuestionId = prevQuestion.Id + 1;
             return newQuestionId;  //TODO actually implement the logic
         }

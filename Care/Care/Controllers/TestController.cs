@@ -15,13 +15,10 @@ namespace Care.Controllers
     {
         //
         // GET: /Test/
-        //private ICareUow _uow;
         private ITestService service;
-        
-        //public TestController(ICareUow uow, IQuestionGenerator questionGenerator)
+                
         public TestController(ITestService testService)
         {
-            //_uow = uow;
             this.service = testService;
         }
 
@@ -39,83 +36,62 @@ namespace Care.Controllers
             string testType = ParseFormValue(formCollection, "testType");
             int testId = 0;
             int studentId = 0;
+            Question prevQuestion = null;
+            Question nextQuestion;
+            Test test = null;
 
-            if (studentIdValue != null && studentIdValue != "")
-            {
-                studentId = ConvertStringToInt(studentIdValue);
-            }
-            else
-            {
+            studentId = ConvertStringToInt(studentIdValue);
+
+            if (studentId == 0)
                 return View("Error");
+
+            testId = ConvertStringToInt(testIdValue);
+
+            //Checks if test is new 
+            if (testId == 0)
+            {
+                ////Get new TestId by passing studentId, testType to TestService
+                Student student = service.GetStudent(studentId);
+                test = service.CreateTest(testType, student);
+                testId = test.Id;
             }
 
-            if (testIdValue != null)
-            {
-                testId = ConvertStringToInt(testIdValue);
-            }
-            else
-            {
-                //Get new TestId by passing studentId, testType to TestService
-                testId = 0;
-            }
-
+            //Update ViewBag
             ViewBag.TestId = testId;
             ViewBag.StudentId = studentId;
             ViewBag.TestType = testType;
-          
 
-            if (answerValue != null)
-            {
-                //string x = "not implemented"; //TODO Save Answer -- ? Move if logic to Service Layer
-                Answer answer = new Answer();
-                answer.Value = answerValue;
-                
-            }        
-            
-            Question prevQuestion = new Question();   //TODO ? move if else logic to Service Layer
+
             if (id.HasValue)
             {
-                prevQuestion.Id = id.Value;
-            }
-            else
+                prevQuestion = service.GetQuestion(id.Value);                
+            }     
+
+            //Save answer
+            if (answerValue != null && prevQuestion != null)
             {
-                //prevQuestion.Id = 0;
-                prevQuestion.Id = 35;
+                Answer answer = new Answer();
+                answer.Value = answerValue;
+                test = service.GetTest(testId);
+                service.SaveAnswer(test, answer, prevQuestion);                
             }
 
-            Test test = new Test();  //TODO change this stuff
-            test.Id = testId;
-            test.Type = testType;
-            //Question question = questionGen.GetNextQuestion(new Test(), prevQuestion, new Answer());
-            Question question = service.GetNextQuestion(test, prevQuestion);
-            if (question != null)
-            {
-                switch (question.Type)
-                {
-                    case "Radio6":
-                        ViewBag.Partial = "Radio6Partial";
-                        return View(question);
-                    //break;
-                    case "Radio2":
-                        ViewBag.Partial = "Radio2Partial";
-                        return View(question);
-                    case "Radio5":
-                        ViewBag.Partial = "Radio5Partial";
-                        return View(question);
-                    //break;
-                    case "InputText":
-                        ViewBag.Partial = "InputTextPartial";
-                        return View(question);
-                    default:
-                        return View("Error");
-                    //break;
-                }
-            }
-            else
+ 
+            //Get next question and figure out which PartialView to render
+            nextQuestion= service.GetNextQuestion(test, prevQuestion);
+
+            if (nextQuestion == null)
             {
                 return View("Complete");
             }
 
+            ViewBag.Partial = GetViewName(nextQuestion);
+            if (ViewBag.Partial == "Error")
+            {
+                return View("Error");
+            }
+
+            return View(nextQuestion);
         }
 
         //
@@ -216,14 +192,44 @@ namespace Care.Controllers
 
         private int ConvertStringToInt(string num)
         {
-            int retId;
-            bool result = Int32.TryParse(num, out retId);
-            if (result)
+            if (num != null && num != "")
             {
-                return retId;
+                int retId;
+                bool result = Int32.TryParse(num, out retId);
+                if (result)
+                {
+                    return retId;
 
+                }
             }
+
             return 0;
+        }
+
+    
+
+        private string GetViewName(Question q)
+        {
+            if (q != null)
+            {
+                switch (q.Type)
+                {
+                    case "Radio6":
+                        return "Radio6Partial";
+                    case "Radio2":
+                        return"Radio2Partial";
+                    case "Radio5":
+                        return "Radio5Partial";
+                    case "InputText":
+                        return  "InputTextPartial";
+                    default:
+                        return "Error";
+               }
+            }
+            else
+            {
+                return "Complete";
+            }
         }
     }
 }

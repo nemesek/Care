@@ -9,10 +9,11 @@ namespace Care.Domain.Abstract
     public interface ITestService
     {
         Question GetNextQuestion(Test test, Question prevQuestion);
-        void SaveAnswer(Test test, Answer answer);
+        void SaveAnswer(Test test, Answer answer, Question question);
         Test GetTest(int? testId);
         Student GetStudent(int? studentId);
-        Test CreateTest(string testType);
+        Test CreateTest(string testType, Student student);
+        Question GetQuestion(int id);
 
     }
 }

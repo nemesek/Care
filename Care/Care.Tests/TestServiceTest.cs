@@ -128,9 +128,10 @@ namespace Care.Tests
             TestLogicFactory tFactory = new TestLogicFactory();
             Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
             TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            Question question = new Question();
 
             //Act
-            target.SaveAnswer(test, answer);
+            target.SaveAnswer(test, answer, question);
 
             //Assert
             mockUow.Verify(m => m.Answers.Add(answer), Times.AtLeastOnce());
@@ -150,9 +151,11 @@ namespace Care.Tests
             TestLogicFactory tFactory = new TestLogicFactory();
             Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
             TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            Student student = new Student();
+            
 
             //Act
-            Test test = target.CreateTest(testType);
+            Test test = target.CreateTest(testType, student);
 
             //Assert
             Assert.IsNotNull(test);

@@ -23,38 +23,49 @@ namespace Care.Domain.Concrete
             
         }
 
-        public Test CreateTest(string testType)
+        public Test CreateTest(string testType, Student student)
         {
-            if (testType != null)
+            if (testType != null && student != null)
             {
                 Test test = new Test();
                 test.Type = testType;
+                test.Student = student;
                 uow.Tests.Add(test);
+                uow.Commit();
                 return test;
             }
             return null;
         }
 
-        public Question GetNextQuestion(Test test, Question prevQuestion)
+        public Question GetQuestion(int id)
         {
-                    
-            string testType = test.Type;
-            if (testType != null)
-            {
-                tLogic = this.factory.CreateTestLogicInstance(testType);
-                return qGen.GetNextQuestion(test, prevQuestion, tLogic);
-            }
-            else
-                return null;
-
-            
+            return uow.Questions.GetById(id);
         }
 
-        public void SaveAnswer(Test test, Answer answer)
+        public Question GetNextQuestion(Test test, Question prevQuestion)
         {
-            if (answer != null)
+            if (test != null)
             {
+
+                string testType = test.Type;
+                if (testType != null)
+                {
+                    tLogic = this.factory.CreateTestLogicInstance(testType);
+                    return qGen.GetNextQuestion(test, prevQuestion, tLogic);
+                }
+            }
+
+            return null;            
+        }
+
+        public void SaveAnswer(Test test, Answer answer, Question question)
+        {
+            if (answer != null && test != null && question != null)
+            {
+                answer.Question = question;
+                answer.Test = test;
                 uow.Answers.Add(answer);
+                uow.Commit();
             }
         }
 

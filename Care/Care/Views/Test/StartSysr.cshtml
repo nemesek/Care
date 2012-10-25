@@ -18,7 +18,6 @@
     @using (Html.BeginForm("Question", "Test"))
     {
         @Html.Hidden("testType", "Sysr")
-        @Html.Hidden("testId", "1")
         @Html.Raw("Student Id")<input type="text" name="studentId" />
         <input class="button" id="submit" type="submit" value="Submit" />
     }
