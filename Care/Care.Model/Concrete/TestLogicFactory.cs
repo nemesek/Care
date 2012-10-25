@@ -24,6 +24,8 @@ namespace Care.Domain.Concrete
                 {
                     case "SYSR":
                         return new SysrTestLogic();
+                    case "MAPS":
+                        return new MapsTestLogic();
                     default:
                         return null;
                 }

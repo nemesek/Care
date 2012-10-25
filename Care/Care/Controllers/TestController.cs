@@ -204,9 +204,7 @@ namespace Care.Controllers
             }
 
             return 0;
-        }
-
-    
+        }   
 
         private string GetViewName(Question q)
         {

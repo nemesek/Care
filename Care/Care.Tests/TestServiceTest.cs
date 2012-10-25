@@ -65,6 +65,30 @@ namespace Care.Tests
         }
 
         [TestMethod]
+        public void TestService_Can_GetQuestion()
+        {
+            //Arrange
+            //Constructor args ICareUow uow, TestLogicFactory factory, IQuestionGenerator questionGenerator
+            //method int id
+            int testId = 35;
+            Mock<ICareUow> mockUow = new Mock<ICareUow>();
+            mockUow.Setup(m => m.Questions.GetById(testId)).Returns(new Question { Id = testId });
+  
+            TestLogicFactory tFactory = new TestLogicFactory();
+            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+
+
+            //Act
+            Question question = target.GetQuestion(testId);
+
+            //Assert
+            Assert.AreEqual(question.Id, testId);
+            mockUow.Verify(m => m.Questions.GetById(testId), Times.AtLeastOnce());
+
+        }
+
+        [TestMethod]
         public void TestService_Can_GetStudent()
         {
             //Arrange

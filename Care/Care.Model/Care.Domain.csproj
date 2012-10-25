@@ -48,6 +48,7 @@
     <Compile Include="Abstract\IStudentRepository.cs" />
     <Compile Include="Abstract\ITestLogic.cs" />
     <Compile Include="Abstract\ITestService.cs" />
+    <Compile Include="Concrete\MapsTestLogic.cs" />
     <Compile Include="Concrete\TestLogicFactory.cs" />
     <Compile Include="Concrete\TestService.cs" />
     <Compile Include="Entities\AccountModels.cs" />

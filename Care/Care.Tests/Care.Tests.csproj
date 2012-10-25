@@ -98,6 +98,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="QuestionGeneratorTest.cs" />
+    <Compile Include="TestControllerTest.cs" />
+    <Compile Include="TestLogicFactoryTest.cs" />
     <Compile Include="TestServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
