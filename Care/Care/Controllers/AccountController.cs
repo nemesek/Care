@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Care.Filters;
 using Care.Domain;
+using Care.Domain.Abstract;
 
 namespace Care.Controllers
 {
@@ -17,9 +18,16 @@ namespace Care.Controllers
     //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private ICareUow uow;
+        private IAuthentication auth;
+
         //
         // GET: /Account/Login
-
+        public AccountController(ICareUow uow, IAuthentication auth)
+        {
+            this.uow = uow;
+            this.auth = auth;
+        }
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -33,16 +41,25 @@ namespace Care.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginModel model, string returnUrl) //TODO actually implement this
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (auth != null)
             {
-                return RedirectToLocal(returnUrl);
+                //return View(model);
+                if (returnUrl.Contains("Test"))
+                    return View(@"../" + returnUrl);
+                else
+                    return View(returnUrl);
             }
+            //uow.Administrators.GetAll();
+            //if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
 
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            //// If we got this far, something failed, redisplay form
+            //ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View("Error");
         }
 
         //

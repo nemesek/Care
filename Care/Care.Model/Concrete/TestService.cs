@@ -15,11 +15,13 @@ namespace Care.Domain.Concrete
         private ITestLogic tLogic;
         private IQuestionGenerator qGen;
 
-        public TestService(ICareUow uow, TestLogicFactory factory, IQuestionGenerator questionGenerator)
+        //public TestService(ICareUow uow, TestLogicFactory factory, IQuestionGenerator questionGenerator)
+        public TestService(ICareUow uow, TestLogicFactory factory)
         {
-            this.qGen = questionGenerator;
+            //this.qGen = questionGenerator;
             this.factory = factory;
             this.uow = uow;
+            //this.tLogic = tLogic;
             
         }
 
@@ -44,18 +46,28 @@ namespace Care.Domain.Concrete
 
         public Question GetNextQuestion(Test test, Question prevQuestion)
         {
-            if (test != null)
+            if (test.Type != null)
             {
-
-                string testType = test.Type;
-                if (testType != null)
-                {
-                    tLogic = this.factory.CreateTestLogicInstance(testType);
-                    return qGen.GetNextQuestion(test, prevQuestion, tLogic);
-                }
+                //this.tLogic = logic;
+                tLogic = this.factory.CreateTestLogicInstance(test.Type);
+                int qId = tLogic.GetQuestionId(test, prevQuestion, uow);
+                Question q = uow.Questions.GetById(qId);
+                return q;
             }
 
-            return null;            
+            return null;
+            //if (test != null)
+            //{
+
+            //    string testType = test.Type;
+            //    if (testType != null)
+            //    {
+            //        tLogic = this.factory.CreateTestLogicInstance(testType);
+            //        return qGen.GetNextQuestion(test, prevQuestion, tLogic);
+            //    }
+            //}
+
+            //return null;            
         }
 
         public void SaveAnswer(Test test, Answer answer, Question question)

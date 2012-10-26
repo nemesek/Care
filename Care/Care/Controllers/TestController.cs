@@ -21,7 +21,7 @@ namespace Care.Controllers
         {
             this.service = testService;
         }
-
+        [Authorize]
         public ActionResult StartSysr()
         {
             return View();
@@ -47,39 +47,26 @@ namespace Care.Controllers
 
             testId = ConvertStringToInt(testIdValue);
 
-            //Checks if test is new 
-            if (testId == 0)
-            {
-                ////Get new TestId by passing studentId, testType to TestService
-                Student student = service.GetStudent(studentId);
-                test = service.CreateTest(testType, student);
-                testId = test.Id;
-            }
+            //Get Test 
+            test = GetTest(testType, ref testId, studentId);            
 
             //Update ViewBag
-            ViewBag.TestId = testId;
-            ViewBag.StudentId = studentId;
-            ViewBag.TestType = testType;
+            UpdateViewBag(testType, testId, studentId);
 
-
+            //Get current question
             if (id.HasValue)
             {
                 prevQuestion = service.GetQuestion(id.Value);                
             }     
 
             //Save answer
-            if (answerValue != null && prevQuestion != null)
-            {
-                Answer answer = new Answer();
-                answer.Value = answerValue;
-                test = service.GetTest(testId);
-                service.SaveAnswer(test, answer, prevQuestion);                
-            }
-
+            //test = service.GetTest(testId);
+            SaveAnswer(answerValue, testId, prevQuestion, test);
  
-            //Get next question and figure out which PartialView to render
+            //Get next question
             nextQuestion= service.GetNextQuestion(test, prevQuestion);
 
+            //Figure out which PartialView to render
             if (nextQuestion == null)
             {
                 return View("Complete");
@@ -93,6 +80,8 @@ namespace Care.Controllers
 
             return View(nextQuestion);
         }
+
+
 
         //
         // GET: /Test/Details/5
@@ -188,6 +177,43 @@ namespace Care.Controllers
             }
 
             return null;
+        }
+
+        private void SaveAnswer(string answerValue, int testId, Question prevQuestion, Test test)
+        {
+            if (answerValue != null && prevQuestion != null)
+            {
+                Answer answer = new Answer();
+                answer.Value = answerValue;
+                //test = service.GetTest(testId);
+                service.SaveAnswer(test, answer, prevQuestion);
+            }
+            //return test;
+        }
+
+        private Test GetTest(string testType, ref int testId, int studentId)
+        {
+            ////Get new TestId by passing studentId, testType to TestService
+            Test t;
+            Student student = service.GetStudent(studentId);
+            if (testId == 0)
+            {
+                t = service.CreateTest(testType, student);
+                testId = t.Id;
+            }
+            else
+            {
+                t = service.GetTest(testId);
+            }
+        
+            return t;
+        }
+
+        private void UpdateViewBag(string testType, int testId, int studentId)
+        {
+            ViewBag.TestId = testId;
+            ViewBag.StudentId = studentId;
+            ViewBag.TestType = testType;
         }
 
         private int ConvertStringToInt(string num)

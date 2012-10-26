@@ -21,6 +21,7 @@ namespace Care
             Bind<ITestLogic>().To<SysrTestLogic>();
             Bind<IQuestionGenerator>().To<QuestionGenerator>();
             Bind<ITestService>().To<TestService>();
+            Bind<IAuthentication>().To<FormsAuthenticate>();
         }
     }
 }

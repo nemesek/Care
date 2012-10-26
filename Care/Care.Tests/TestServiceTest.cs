@@ -30,8 +30,8 @@ namespace Care.Tests
             
 
             //Act
-            TestService target = new TestService(uow, tFactory, qGenerator);
-
+            //TestService target = new TestService(uow, tFactory, qGenerator);
+            TestService target = new TestService(uow, tFactory);
 
             //Assert
             Assert.IsNotNull(target);
@@ -48,7 +48,8 @@ namespace Care.Tests
             CareUow uow = new CareUow(provider);
             TestLogicFactory tFactory = new TestLogicFactory();
             QuestionGenerator qGenerator = new QuestionGenerator(uow);
-            TestService target = new TestService(uow, tFactory, qGenerator);
+            //TestService target = new TestService(uow, tFactory, qGenerator);
+            TestService target = new TestService(uow, tFactory);
             Question q = new Question();
             q.Id = 35;
             Test t = new Test();
@@ -75,8 +76,9 @@ namespace Care.Tests
             mockUow.Setup(m => m.Questions.GetById(testId)).Returns(new Question { Id = testId });
   
             TestLogicFactory tFactory = new TestLogicFactory();
-            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
-            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            //Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            //TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            TestService target = new TestService(mockUow.Object, tFactory);
 
 
             //Act
@@ -98,8 +100,8 @@ namespace Care.Tests
             RepositoryProvider provider = new RepositoryProvider(factory);
             CareUow uow = new CareUow(provider);
             TestLogicFactory tFactory = new TestLogicFactory();
-            QuestionGenerator qGenerator = new QuestionGenerator(uow);
-            TestService target = new TestService(uow, tFactory, qGenerator);
+            //QuestionGenerator qGenerator = new QuestionGenerator(uow);
+            TestService target = new TestService(uow, tFactory);
             int studentId = 41;
 
             //Act
@@ -123,8 +125,8 @@ namespace Care.Tests
                 new Student{Id = 55, FirstName="Dan"},
             }.AsQueryable());
             TestLogicFactory tFactory = new TestLogicFactory();
-            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
-            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            //Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            TestService target = new TestService(mockUow.Object, tFactory);
             
 
             //Act
@@ -150,8 +152,8 @@ namespace Care.Tests
             Mock<ICareUow> mockUow = new Mock<ICareUow>();
             mockUow.Setup(m => m.Answers.Add(answer));
             TestLogicFactory tFactory = new TestLogicFactory();
-            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
-            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            //Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            TestService target = new TestService(mockUow.Object, tFactory);
             Question question = new Question();
 
             //Act
@@ -173,8 +175,8 @@ namespace Care.Tests
             Mock<ICareUow> mockUow = new Mock<ICareUow>();
             mockUow.Setup(m => m.Tests.Add(t));
             TestLogicFactory tFactory = new TestLogicFactory();
-            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
-            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            //Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            TestService target = new TestService(mockUow.Object, tFactory);
             Student student = new Student();
             
 
@@ -197,8 +199,8 @@ namespace Care.Tests
             Mock<ICareUow> mockUow = new Mock<ICareUow>();
             mockUow.Setup(m => m.Tests.GetById(testId)).Returns(new Test { Id = testId });
             TestLogicFactory tFactory = new TestLogicFactory();
-            Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
-            TestService target = new TestService(mockUow.Object, tFactory, mockQGenerator.Object);
+            //Mock<IQuestionGenerator> mockQGenerator = new Mock<IQuestionGenerator>();
+            TestService target = new TestService(mockUow.Object, tFactory);
 
             //Act
             Test test = target.GetTest(testId);
