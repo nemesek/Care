@@ -46,7 +46,8 @@ namespace Care.Controllers
             if (auth != null)
             {
                 //return View(model);
-                if (returnUrl.Contains("Test"))
+                string url = returnUrl.ToUpper();
+                if (url.Contains("TEST"))
                     return View(@"../" + returnUrl);
                 else
                     return View(returnUrl);

@@ -16,7 +16,7 @@ namespace Care.Controllers
         {
             _service = testService;
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult StartSysr()
         {
             return View();
@@ -26,7 +26,7 @@ namespace Care.Controllers
         {
             if (!ModelState.IsValid)
                 return View("Error");
-           // QuestionViewModel qvm = new QuestionViewModel();
+           
             Test test = null;
             Question prevQuestion = null;
             Question nextQuestion = null;
