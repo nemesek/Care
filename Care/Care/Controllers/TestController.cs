@@ -22,10 +22,10 @@ namespace Care.Controllers
             return View();
         }
 
-        public ActionResult Question(int ? id, QuestionViewModel qvm) 
+        public ActionResult Question( QuestionViewModel qvm) 
         {
-            if (!ModelState.IsValid)
-                return View("Error");
+            //if (!ModelState.IsValid)
+            //    return View("Error");
            
             Test test = null;
             Question prevQuestion = null;
@@ -37,9 +37,9 @@ namespace Care.Controllers
             test = GetTest(qvm);
 
             //Get current question
-            if (id.HasValue)
+            if (qvm.QuestionId > 0)
             {
-                prevQuestion = _service.GetQuestion(id.Value);
+                prevQuestion = _service.GetQuestion(qvm.QuestionId);
             }
 
             //Save answer
@@ -58,6 +58,7 @@ namespace Care.Controllers
                 qvm.QuestionId = nextQuestion.Id;
                 qvm.QuestionValue = nextQuestion.Value;
                 qvm.TestId = test.Id;
+                ModelState.Remove("QuestionId");
             }
 
             //Figure out which PartialView to render

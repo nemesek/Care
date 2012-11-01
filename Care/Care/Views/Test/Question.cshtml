@@ -30,7 +30,19 @@
 <h3>Question</h3>
 <div id="QuestionId">@Model.QuestionId.ToString()</div>
 <div id="QuestionValue">@Model.QuestionValue.ToString()</div>
-@using (Html.BeginForm("Question", "Test", new {id = @Model.QuestionId.ToString()}))
+@using (Html.BeginForm("Question", "Test"))
+{
+        @Html.Hidden("testId", Model.TestId.ToString());
+        @Html.Hidden("studentId", Model.StudentId.ToString());
+        @Html.Hidden("testType", Model.TestType.ToString()); 
+        @Html.Hidden("questionId", Model.QuestionId.ToString());
+        string partialName = ViewBag.Partial.ToString();
+        Html.RenderPartial(partialName, Model);
+        <br />
+    <input class="button" id="submit" type="submit" value="Submit" />    
+}
+
+@*@using (Html.BeginForm("Question", "Test", new {id = @Model.QuestionId.ToString()}))
 {
         @Html.Hidden("testId", Model.TestId.ToString());
         @Html.Hidden("studentId", Model.StudentId.ToString());
@@ -39,4 +51,4 @@
         Html.RenderPartial(partialName, Model);
         <br />
     <input class="button" id="submit" type="submit" value="Submit" />    
-}
+}*@

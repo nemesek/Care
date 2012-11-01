@@ -62,7 +62,7 @@ namespace Care.Tests
 
 
             //Act
-            var result = target.Question(id, viewModel);
+            var result = target.Question(viewModel);
             var model = target.ViewData.Model as QuestionViewModel;
 
             //Assert
