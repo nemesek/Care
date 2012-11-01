@@ -1,13 +1,7 @@
 ﻿using Care.Domain;
 using Care.Domain.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Care.ViewModels;
 
 namespace Care.Controllers
 {
@@ -15,11 +9,11 @@ namespace Care.Controllers
     {
         //
         // GET: /Test/
-        private ITestService service;
+        private readonly ITestService _service;
                 
         public TestController(ITestService testService)
         {
-            this.service = testService;
+            _service = testService;
         }
         [Authorize]
         public ActionResult StartSysr()
@@ -27,7 +21,7 @@ namespace Care.Controllers
             return View();
         }
 
-        public ActionResult Question(int? id, FormCollection formCollection)
+        public ActionResult Question(int? id, FormCollection formCollection)  //TODO - Do ModelBinding rather than using FormCollection
         {
             //Read form values
             string testIdValue = ParseFormValue(formCollection, "testId");
@@ -37,7 +31,7 @@ namespace Care.Controllers
             int testId = 0;
             int studentId = 0;
             Question prevQuestion = null;
-            Question nextQuestion;
+            Question nextQuestion = null;
             Test test = null;
 
             studentId = ConvertStringToInt(studentIdValue);
@@ -56,7 +50,7 @@ namespace Care.Controllers
             //Get current question
             if (id.HasValue)
             {
-                prevQuestion = service.GetQuestion(id.Value);                
+                prevQuestion = _service.GetQuestion(id.Value);                
             }     
 
             //Save answer
@@ -64,14 +58,15 @@ namespace Care.Controllers
             SaveAnswer(answerValue, testId, prevQuestion, test);
  
             //Get next question
-            nextQuestion= service.GetNextQuestion(test, prevQuestion);
+            nextQuestion= _service.GetNextQuestion(test, prevQuestion);
 
-            //Figure out which PartialView to render
+            //Check if Test is completed
             if (nextQuestion == null)
             {
-                return View("Complete");
+                return View("TestComplete");
             }
 
+            //Figure out which PartialView to render
             ViewBag.Partial = GetViewName(nextQuestion);
             if (ViewBag.Partial == "Error")
             {
@@ -186,7 +181,7 @@ namespace Care.Controllers
                 Answer answer = new Answer();
                 answer.Value = answerValue;
                 //test = service.GetTest(testId);
-                service.SaveAnswer(test, answer, prevQuestion);
+                _service.SaveAnswer(test, answer, prevQuestion);
             }
             //return test;
         }
@@ -195,15 +190,15 @@ namespace Care.Controllers
         {
             ////Get new TestId by passing studentId, testType to TestService
             Test t;
-            Student student = service.GetStudent(studentId);
+            Student student = _service.GetStudent(studentId);
             if (testId == 0)
             {
-                t = service.CreateTest(testType, student);
+                t = _service.CreateTest(testType, student);
                 testId = t.Id;
             }
             else
             {
-                t = service.GetTest(testId);
+                t = _service.GetTest(testId);
             }
         
             return t;
@@ -218,7 +213,7 @@ namespace Care.Controllers
 
         private int ConvertStringToInt(string num)
         {
-            if (num != null && num != "")
+            if (!string.IsNullOrEmpty(num))
             {
                 int retId;
                 bool result = Int32.TryParse(num, out retId);
@@ -250,10 +245,7 @@ namespace Care.Controllers
                         return "Error";
                }
             }
-            else
-            {
-                return "Complete";
-            }
+            return "Complete";
         }
     }
 }

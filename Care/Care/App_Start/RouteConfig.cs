@@ -24,11 +24,11 @@ namespace Care
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-               name: "Test",
-               url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Test", action = "Route6", id = UrlParameter.Optional }
-           );
+            //routes.MapRoute(
+            //   name: "Test",
+            //   url: "{controller}/{action}/{id}",
+            //   defaults: new { controller = "Test", action = "Route6", id = UrlParameter.Optional }
+           //);
         }
     }
 }
