@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Care.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Care.Domain.Abstract;
@@ -26,13 +27,20 @@ namespace Care.Tests
             int studentId = 1;
             int id = 35;
             int nId = id + 1;
+            QuestionViewModel viewModel = new QuestionViewModel();
+            viewModel.TestId = testId;
+            viewModel.AnswerValue = testAnswer;
+            viewModel.StudentId = studentId;
+            viewModel.TestType = testType;
+            viewModel.QuestionId = id;
+            //FormCollection formValues = new FormCollection();
+            //formValues.Add("testId", testId.ToString());
+            //formValues.Add("answer", testAnswer);
+            //formValues.Add("studentId", studentId.ToString());
+            //formValues.Add("testType", testType);
 
-            FormCollection formValues = new FormCollection();
-            formValues.Add("testId", testId.ToString());
-            formValues.Add("answer", testAnswer);
-            formValues.Add("studentId", studentId.ToString());
-            formValues.Add("testType", testType);
-            
+
+
             Test mockTest = new Test();
             mockTest.Id = testId;
             mockTest.Type = testType;
@@ -45,22 +53,22 @@ namespace Care.Tests
             mockAnswer.Value = testAnswer;
 
             Mock<ITestService> mockTestService = new Mock<ITestService>();
-            
+
             mockTestService.Setup(m => m.GetTest(mockTest.Id)).Returns(mockTest);
             mockTestService.Setup(m => m.SaveAnswer(mockTest, mockAnswer, mockQuestion));
             mockTestService.Setup(m => m.GetQuestion(id)).Returns(mockQuestion);
             mockTestService.Setup(m => m.GetNextQuestion(mockTest, mockQuestion)).Returns(new Question { Id = nId, Type = "Radio6" });
-            TestController target = new TestController(mockTestService.Object);           
+            TestController target = new TestController(mockTestService.Object);
 
 
             //Act
-            var result = target.Question(id, formValues);
-            var model = target.ViewData.Model as Question;
+            var result = target.Question(id, viewModel);
+            var model = target.ViewData.Model as QuestionViewModel;
 
             //Assert
             Assert.IsNotNull(result);
             Assert.IsNotNull(model);
-            Assert.IsTrue(model.Id == nId);
+            Assert.IsTrue(model.QuestionId == nId);
         }
     }
 }

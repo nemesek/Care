@@ -2,9 +2,12 @@
     Layout = null;
 }*@
 
+@model Care.ViewModels.QuestionViewModel
+
 <body>
     @{
-        @Html.RadioButton("answer", "NO", true)@:NO<br />
-        @Html.RadioButton("answer", "YES")@:YES<br />
+        @Html.RadioButton("AnswerValue", "0", true)@:NO<br />
+        @Html.RadioButton("AnswerValue", "1")@:YES<br />
+
     }       
 </body>

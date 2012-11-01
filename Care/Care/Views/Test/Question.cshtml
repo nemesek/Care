@@ -1,4 +1,5 @@
-﻿@model Care.Domain.Question
+﻿@*@model Care.Domain.Question*@
+@model Care.ViewModels.QuestionViewModel
 
 
 @{
@@ -10,7 +11,7 @@
     <p>Hello Dan</p>
 </body>
 
-<h3>Question</h3>
+@*<h3>Question</h3>
 <div id="QuestionId">@Model.Id.ToString()</div>
 <div id="QuestionValue">@Model.Value.ToString()</div>
 @using (Html.BeginForm("Question", "Test", new { id = @Model.Id.ToString() }))
@@ -23,6 +24,19 @@
         Html.RenderPartial(partialName);
         <br />
     <input class="button" id="submit" type="submit" value="Submit" />    
+}*@
+
+
+<h3>Question</h3>
+<div id="QuestionId">@Model.QuestionId.ToString()</div>
+<div id="QuestionValue">@Model.QuestionValue.ToString()</div>
+@using (Html.BeginForm("Question", "Test", new {id = @Model.QuestionId.ToString()}))
+{
+        @Html.Hidden("testId", Model.TestId.ToString());
+        @Html.Hidden("studentId", Model.StudentId.ToString());
+        @Html.Hidden("testType", Model.TestType.ToString()); 
+        string partialName = ViewBag.Partial.ToString();
+        Html.RenderPartial(partialName, Model);
+        <br />
+    <input class="button" id="submit" type="submit" value="Submit" />    
 }
-
-

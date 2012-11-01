@@ -1,15 +1,27 @@
 ﻿@*@{
     Layout = null;
 }*@
-
-<body>
+@model Care.ViewModels.QuestionViewModel
+@*<body>
     @{
-        @Html.RadioButton("answer", "0", true)@:0<br />
+        @Html.RadioButton(Model.AnswerValue, "0", true)@:0<br />
         @Html.RadioButton("answer", "1")@:1<br />
         @Html.RadioButton("answer", "2")@:2<br />
         @Html.RadioButton("answer", "3")@:3<br />
         @Html.RadioButton("answer", "4")@:4<br />
         @Html.RadioButton("answer", "5")@:5<br />
         @Html.RadioButton("answer", "6")@:6<br /> 
+    }       
+</body>*@
+
+<body>
+    @{
+        @Html.RadioButton("AnswerValue", "0", true)@:0<br />
+        @Html.RadioButton("AnswerValue", "1")@:1<br />
+        @Html.RadioButton("AnswerValue", "2")@:2<br />
+        @Html.RadioButton("AnswerValue", "3")@:3<br />
+        @Html.RadioButton("AnswerValue", "4")@:4<br />
+        @Html.RadioButton("AnswerValue", "5")@:5<br />
+        @Html.RadioButton("AnswerValue", "6")@:6<br /> 
     }       
 </body>
