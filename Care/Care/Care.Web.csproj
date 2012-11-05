@@ -169,10 +169,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAuthentication.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EFBindingModule.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Concrete\FormsAuthenticate.cs" />
     <Compile Include="Old\IocConfig.cs" />
     <Compile Include="Old\NinjectControllerFactory.cs" />
     <Compile Include="Old\NinjectDependencyResolver.cs" />

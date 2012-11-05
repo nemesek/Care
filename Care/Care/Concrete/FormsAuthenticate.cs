@@ -1,12 +1,8 @@
-﻿using Care.Domain.Abstract;
+﻿using Care.Web.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Security;
 
-namespace Care.Domain.Concrete
+namespace Care.Web.Concrete
 {
     public class FormsAuthenticate : IAuthentication
     {

@@ -1,6 +1,5 @@
 ﻿using Care.Domain;
 using Care.Domain.Abstract;
-using System;
 using System.Web.Mvc;
 using Care.ViewModels;
 
@@ -22,6 +21,7 @@ namespace Care.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Question( QuestionViewModel qvm) 
         {
             //if (!ModelState.IsValid)

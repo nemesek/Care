@@ -42,14 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAuthentication.cs" />
     <Compile Include="Abstract\ICareUow.cs" />
     <Compile Include="Abstract\IQuestionGenerator.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IStudentRepository.cs" />
     <Compile Include="Abstract\ITestLogic.cs" />
     <Compile Include="Abstract\ITestService.cs" />
-    <Compile Include="Concrete\FormsAuthenticate.cs" />
     <Compile Include="Concrete\MapsTestLogic.cs" />
     <Compile Include="Concrete\TestLogicFactory.cs" />
     <Compile Include="Concrete\TestService.cs" />

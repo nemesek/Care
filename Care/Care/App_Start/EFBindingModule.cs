@@ -1,5 +1,7 @@
 ﻿using Care.Domain.Abstract;
 using Care.Data.Concrete;
+using Care.Web.Abstract;
+using Care.Web.Concrete;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
