@@ -51,7 +51,7 @@ namespace Care.Tests
             //TestService target = new TestService(uow, tFactory, qGenerator);
             TestService target = new TestService(uow, tFactory);
             Question q = new Question();
-            q.Id = 35;
+            q.Id = 1;
             Test t = new Test();
             t.Type = "sysr";
             t.Id = 1;
@@ -62,7 +62,7 @@ namespace Care.Tests
 
             //Assert
             Assert.IsNotNull(next);
-            Assert.AreEqual(next.Id, 36);
+            Assert.AreEqual(next.Id, 2);
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace Care.Tests
             TestLogicFactory tFactory = new TestLogicFactory();
             //QuestionGenerator qGenerator = new QuestionGenerator(uow);
             TestService target = new TestService(uow, tFactory);
-            int studentId = 41;
+            int studentId = 1;
 
             //Act
             Student student = target.GetStudent(studentId);
