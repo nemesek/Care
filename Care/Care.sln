@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TODOReminders.txt = TODOReminders.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Care.Ioc", "Care.Ioc\Care.Ioc.csproj", "{BAF893F0-46D7-4911-8A26-D06E006EEBED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{F231DD38-9745-4243-9A41-AEE284658807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F231DD38-9745-4243-9A41-AEE284658807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F231DD38-9745-4243-9A41-AEE284658807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF893F0-46D7-4911-8A26-D06E006EEBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF893F0-46D7-4911-8A26-D06E006EEBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF893F0-46D7-4911-8A26-D06E006EEBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF893F0-46D7-4911-8A26-D06E006EEBED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

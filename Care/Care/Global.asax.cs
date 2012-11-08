@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Care.Web;
 using Ninject.Web.Common;
 using Ninject;
 using System.Reflection;
-using Ninject.Modules;
-using Care.Data.Concrete;
-using Care.Domain.Abstract;
+//using Ninject.Modules;
+//using Care.Data.Concrete;
 
 namespace Care
 {
@@ -41,7 +35,10 @@ namespace Care
         protected override Ninject.IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            kernel.Load(Assembly.GetExecutingAssembly());
+            kernel.Load(Assembly.GetExecutingAssembly(),
+                Assembly.Load("Care.Data"),
+                Assembly.Load("Care.Model"),
+                Assembly.Load("Care.Ioc"));
             return kernel;
         }
 

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using Ninject;
 using Care.Domain.Abstract;
-using Care.Data.Concrete;
+//using Care.Data.Concrete;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject.Web.Common;
-using Care.Data.Abstract;
+//using Care.Data.Abstract;
 
 namespace Care
 {
@@ -32,28 +32,28 @@ namespace Care
 
         private void AddBindings()
         {
-            //put additional bindings here
-            //Mock implementation of the IProductRepository Interface
-            //Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            //mock.Setup(m => m.Products).Returns(new List<Product>{
-            //    new Product {Name = "Football", Price = 25},
-            //    new Product {Name = "Surf board", Price = 179},
-            //    new Product {Name = "Running shoes", Price = 95}
-            //}.AsQueryable());
-            //ninjectKernel.Bind<IProductRepository>().ToConstant(mock.Object);
-            //ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
+            ////put additional bindings here
+            ////Mock implementation of the IProductRepository Interface
+            ////Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            ////mock.Setup(m => m.Products).Returns(new List<Product>{
+            ////    new Product {Name = "Football", Price = 25},
+            ////    new Product {Name = "Surf board", Price = 179},
+            ////    new Product {Name = "Running shoes", Price = 95}
+            ////}.AsQueryable());
+            ////ninjectKernel.Bind<IProductRepository>().ToConstant(mock.Object);
+            ////ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
 
-            //EmailSettings emailSettings = new EmailSettings
-            //{
-            //    WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
-            //};
+            ////EmailSettings emailSettings = new EmailSettings
+            ////{
+            ////    WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            ////};
 
-            //ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
-            ninjectKernel.Bind<RepositoryFactories>().To<RepositoryFactories>()
-               .InSingletonScope();
-            ninjectKernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
-            ninjectKernel.Bind<ICareUow>().To<CareUow>().InRequestScope();
-            //ninjectKernel.Bind<ICareUow>().To<CareUow>();
+            ////ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            //ninjectKernel.Bind<RepositoryFactories>().To<RepositoryFactories>()
+            //   .InSingletonScope();
+            //ninjectKernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
+            //ninjectKernel.Bind<ICareUow>().To<CareUow>().InRequestScope();
+            ////ninjectKernel.Bind<ICareUow>().To<CareUow>();
         }
     }
 }

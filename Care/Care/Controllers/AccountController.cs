@@ -17,11 +17,11 @@ namespace Care.Controllers
     public class AccountController : Controller
     {
         private ICareUow uow;
-        private IAuthentication auth;
+        private Care.Domain.Abstract.IAuthentication auth;
 
         //
         // GET: /Account/Login
-        public AccountController(ICareUow uow, IAuthentication auth)
+        public AccountController(ICareUow uow, Care.Domain.Abstract.IAuthentication auth)
         {
             this.uow = uow;
             this.auth = auth;
