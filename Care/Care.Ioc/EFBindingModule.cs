@@ -17,7 +17,7 @@ namespace Care
         {
             Bind<RepositoryFactories>().To<RepositoryFactories>().InSingletonScope();
             Bind<IRepositoryProvider>().To<RepositoryProvider>();
-            Bind<ICareUow>().To<CareUow>().InRequestScope();
+            Bind<ICareUow>().To<CareUow>().InScope(ctx => HttpContext.Current);
             Bind<ITestLogic>().To<SysrTestLogic>();
             Bind<IQuestionGenerator>().To<QuestionGenerator>();
             Bind<ITestService>().To<TestService>();

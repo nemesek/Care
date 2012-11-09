@@ -13,7 +13,7 @@ namespace Care.Domain.Concrete
         {
             if(prevQuestion == null)
             {
-                return 1;
+                return 35;
             }
             int newQuestionId = prevQuestion.Id + 1;
             return newQuestionId;  //TODO actually implement the logic

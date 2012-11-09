@@ -9,7 +9,7 @@ namespace Care.Ioc.App_Start
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
-    using Ninject.Web.Common;
+    //using Ninject.Web.Common;
 
     public static class NinjectWebCommon
     {
