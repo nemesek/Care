@@ -49,7 +49,6 @@ namespace Care.Data.Concrete
 
         public void Commit()
         {
-            //System.Diagnostics.Debug.WriteLine("Committed");
             DbContext.SaveChanges();
         }
 

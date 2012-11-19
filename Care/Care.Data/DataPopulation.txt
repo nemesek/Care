@@ -1,4 +1,5 @@
 ﻿use [Care.Data.Concrete.CareDbContext]
+INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How depressed have you been feeling during the last two weeks including today?, 'SYSR', 'Green', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often are you so nervous or anxioius that you can not sit still?', 'SYSR', 'Yellow', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often do you feel that you are in control of your life?', 'SYSR', 'Yellow', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often do you feel hopeless about your life?', 'SYSR','Yellow', 0);

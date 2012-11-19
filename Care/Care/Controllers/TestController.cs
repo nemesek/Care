@@ -72,64 +72,6 @@ namespace Care.Controllers
 
 
 
-
-        //public ActionResult Question(int? id, FormCollection formCollection)  //TODO - Do ModelBinding rather than using FormCollection
-        //{
-        //    //Read form values
-        //    string testIdValue = ParseFormValue(formCollection, "testId");
-        //    string answerValue = ParseFormValue(formCollection, "answer");
-        //    string  studentIdValue = ParseFormValue(formCollection, "studentId");
-        //    string testType = ParseFormValue(formCollection, "testType");
-        //    int testId = 0;
-        //    int studentId = 0;
-        //    Question prevQuestion = null;
-        //    Question nextQuestion = null;
-        //    Test test = null;
-
-        //    studentId = ConvertStringToInt(studentIdValue);
-
-        //    if (studentId == 0)
-        //        return View("Error");
-
-        //    testId = ConvertStringToInt(testIdValue);
-
-        //    //Get Test 
-        //    test = GetTest(testType, ref testId, studentId);            
-
-        //    //Update ViewBag
-        //    UpdateViewBag(testType, testId, studentId);
-
-        //    //Get current question
-        //    if (id.HasValue)
-        //    {
-        //        prevQuestion = _service.GetQuestion(id.Value);                
-        //    }     
-
-        //    //Save answer
-        //    //test = service.GetTest(testId);
-        //    SaveAnswer(answerValue, testId, prevQuestion, test);
- 
-        //    //Get next question
-        //    nextQuestion= _service.GetNextQuestion(test, prevQuestion);
-
-        //    //Check if Test is completed
-        //    if (nextQuestion == null)
-        //    {
-        //        return View("TestComplete");
-        //    }
-
-        //    //Figure out which PartialView to render
-        //    ViewBag.Partial = GetViewName(nextQuestion);
-        //    if (ViewBag.Partial == "Error")
-        //    {
-        //        return View("Error");
-        //    }
-
-        //    return View(nextQuestion);
-        //}
-
-
-
         //
         // GET: /Test/Details/5
 

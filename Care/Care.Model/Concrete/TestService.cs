@@ -56,18 +56,7 @@ namespace Care.Domain.Concrete
             }
 
             return null;
-            //if (test != null)
-            //{
-
-            //    string testType = test.Type;
-            //    if (testType != null)
-            //    {
-            //        tLogic = this.factory.CreateTestLogicInstance(testType);
-            //        return qGen.GetNextQuestion(test, prevQuestion, tLogic);
-            //    }
-            //}
-
-            //return null;            
+       
         }
 
         public void SaveAnswer(Test test, Answer answer, Question question)
