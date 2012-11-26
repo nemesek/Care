@@ -1,6 +1,6 @@
 ﻿use [Care.Data.Concrete.CareDbContext]
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How depressed have you been feeling during the last two weeks including today?, 'SYSR', 'Green', 0);
-INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often are you so nervous or anxioius that you can not sit still?', 'SYSR', 'Yellow', 0);
+INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often are you so nervous or anxious that you can not sit still?', 'SYSR', 'Yellow', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often do you feel that you are in control of your life?', 'SYSR', 'Yellow', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'How often do you feel hopeless about your life?', 'SYSR','Yellow', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'During the last 24 hours, how many times have you though of suicide?', 'SYSR','Purple', 0);
@@ -9,6 +9,11 @@ INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Ra
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Have you ever thought about suicide?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Have you ever thought about HOW you would try to end your life?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Are you thinking now about HOW you would try to end your life?', 'SYSR', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'What would you do?', 'SYSR', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'What do you think would happen to you if you...?', 'SYSR', 'Orange', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'How hard would it be for you to get the ...?', 'SYSR', 'Green', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'Where are the ...?', 'SYSR',  0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Have you done anything toward carrying out your ideas?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Has a friend or family member attempted or completed suicide?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio5', 'When did this happen?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'To whom?', 'SYSR', 0);
@@ -17,6 +22,19 @@ INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Ra
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('InputText', 'What did you do? (How did you try to end your life?)', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'Was the attempt made when using drugs/alcohol?', 'SYSR', 0);
 INSERT INTO Questions (Type, Value, TestName, Color, HasSubQuestion) VALUES ('Radio6', 'Compared to when you attempted suicide, how much more emotional pain are you in now?', 'SYSR', 'Green',0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio2', 'When things are really bad for you do you really want to die OR do you really want something to change in your life?', 'SYSR', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'This is really a tough question, but tell me how much do you really want to die?', 'SYSR', 'Green', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'How worried should I be about you right now -- that you will try to end your life?', 'SYSR', 'Green', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'When you get really mad, how often do you feel like you might lose control?', 'SYSR', 'Yellow', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'How often do you have serious conflicts and/or tension with your parent(s)/guardian(s)?', 'SYSR', 'Blue', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'In the last month, how often did you use alcohol and/or drugs on weekends, Fridays through Sundays?', 'SYSR', 'Blue', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'In the last month, how often did you use alcohol and/or drugs on weekdays, Mondays through Thursdays?', 'SYSR', 'Blue', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'In the last month, how often did you use more than one drug (say alcohol and another drug) at the same time?', 'SYSR', 'Blue', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'In the last year, how many times did you run away from home for a day or more?', 'SYSR', 'Purple', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'In the last year, how often did you take life-threatening risks?', 'SYSR', 'Purple', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio8', 'In the last year, how often did you take life-threatening risks?', 'SYSR', 'Green', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'How often are you satisfied that you can turn to your family for help when something is bothering you?', 'SYSR', 'Yellow', 0);
+INSERT INTO Questions (Type, Value, TestName, HasSubQuestion) VALUES ('Radio6', 'How often do you feel like there is someone you can turn to?', 'SYSR', 'Yellow', 0);
 
 INSERT INTO Students (FirstName, LastName, Age, School, RiskAssessment, AdministratorID) VALUES ('Adrian', 'Peterson', 18, 'Palestine TX', 5, 1);
 INSERT INTO Students (FirstName, LastName, Age, School, RiskAssessment, AdministratorID) VALUES ('Barry', 'Sanders', 16, 'KansasCity KA', 2, 2);
