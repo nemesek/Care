@@ -1,4 +1,5 @@
-﻿using Care.Domain;
+﻿using System;
+using Care.Domain;
 using Care.Domain.Abstract;
 using System.Web.Mvc;
 using Care.ViewModels;
@@ -13,6 +14,10 @@ namespace Care.Controllers
                 
         public TestController(ITestService testService)
         {
+            if (testService == null)
+            {
+                throw new ArgumentNullException("ITestService");
+            }
             _service = testService;
         }
         [Authorize]

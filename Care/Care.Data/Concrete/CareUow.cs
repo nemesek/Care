@@ -35,6 +35,11 @@ namespace Care.Data.Concrete
 
         public CareUow(IRepositoryProvider repositoryProvider)
         {
+            if (repositoryProvider == null)
+            {
+                throw new ArgumentNullException("repositoryProvider");
+            }
+
             DbContext = new CareDbContext();
             repositoryProvider.DbContext = DbContext;
             RepositoryProvider = repositoryProvider;

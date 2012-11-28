@@ -18,6 +18,10 @@ namespace Care.Domain.Concrete
         //public TestService(ICareUow uow, TestLogicFactory factory, IQuestionGenerator questionGenerator)
         public TestService(ICareUow uow, TestLogicFactory factory)
         {
+            if (uow == null || factory == null)
+            {
+                throw new ArgumentNullException("uow or factory");
+            }
             //this.qGen = questionGenerator;
             this.factory = factory;
             this.uow = uow;
